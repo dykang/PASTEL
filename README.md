@@ -16,7 +16,7 @@ In order to experiment with (and hopefully improve) our models for controlled st
 ## Citation
     
     @inproceedings{kang19bemnlp,
-      title = {(Male, Bachelor) and (Female, Ph.D) have different connotations : Parallelly Annotated Stylistic Language Dataset with Multiple Personas},
+      title = {(Male, Bachelor) and (Female, Ph.D) have different connotations: Parallelly Annotated Stylistic Language Dataset with Multiple Personas},
       author = {Dongyeop Kang and Varun Gangal, and Eduard Hovy},
       booktitle = {Conference on Empirical Methods in Natural Language Processing (EMNLP)},
       address = {Hong Kong},
