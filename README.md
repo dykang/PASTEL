@@ -2,10 +2,10 @@
 Data and code for ["(Male, Bachelor) and (Female, Ph.D) have different connotations : Parallelly Annotated Stylistic Language Dataset with Multiple Personas"](https://arxiv.org/) by Dongyeop Kang, Varun Gangal, and Eduard Hovy, EMNLP 2019
 
 ## The PASTEL dataset
-PASTEL is a dataset of XXX.
-The dataset consists of over XXX.
+PASTEL is a parallelly annotated stylistic language dataset.
+The dataset consists of ~41K parallel sentences and 8.3K parallel stories annotated across different personas.
 
-We structured the dataset into XXX. Each is further split into the train/dev/test splits (same splits used in the paper). Due to licensing constraints, we provide instructions and scripts for downloading the VIST dataset for raw reference sentences and images.
+Each story is split into the train/dev/test splits (same splits used in the paper). Due to licensing constraints, we provide instructions and scripts for downloading the VIST dataset for raw reference sentences and images.
 
 ## Setup Configuration
 Run `./setup.sh` at the root of this repository to install dependencies and download the VIST dataset.
@@ -17,7 +17,7 @@ In order to experiment with (and hopefully improve) our models for controlled st
     
     @inproceedings{kang19bemnlp,
       title = {(Male, Bachelor) and (Female, Ph.D) have different connotations: Parallelly Annotated Stylistic Language Dataset with Multiple Personas},
-      author = {Dongyeop Kang and Varun Gangal, and Eduard Hovy},
+      author = {Dongyeop Kang and Varun Gangal and Eduard Hovy},
       booktitle = {Conference on Empirical Methods in Natural Language Processing (EMNLP)},
       address = {Hong Kong},
       month = {November},
