@@ -1,0 +1,1 @@
+CUDA_VISIBLE_DEVICES="" python main.py -mode=train -initGlove -modelName=simpleModelGlove_ethnic-paired -emb_size=300 -hidden_size=384  -problem=ethnic-paired | tee logs/simpleModelGlove_ethnic-paired

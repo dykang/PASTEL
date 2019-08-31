@@ -1,0 +1,4 @@
+rake-nltk
+csvmapper
+bearcart
+spacy
