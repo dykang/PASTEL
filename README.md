@@ -1,5 +1,5 @@
 # PASTEL
-Data and code for ["(Male, Bachelor) and (Female, Ph.D) have different connotations : Parallelly Annotated Stylistic Language Dataset with Multiple Personas"](https://arxiv.org/) by Dongyeop Kang, Varun Gangal, and Eduard Hovy, EMNLP 2019
+Data and code for ["(Male, Bachelor) and (Female, Ph.D) have different connotations: Parallelly Annotated Stylistic Language Dataset with Multiple Personas"](https://arxiv.org/) by Dongyeop Kang, Varun Gangal, and Eduard Hovy, EMNLP 2019
 
 ## The PASTEL dataset
 PASTEL is a parallelly annotated stylistic language dataset.
