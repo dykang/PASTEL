@@ -7,11 +7,24 @@ The dataset consists of ~41K parallel sentences and 8.3K parallel stories annota
 
 Each story is split into the train/dev/test splits (same splits used in the paper). Due to licensing constraints, we provide instructions and scripts for downloading the VIST dataset for raw reference sentences and images.
 
+#### Examples in PASTEL: 
+<img src="dataset.png" width="90%" height="90%">
+
+#### Style-transfer using PASTEL 
+<img src="transfer.png" width="80%" height="80%">
+
+
 ## Setup Configuration
 Run `./setup.sh` at the root of this repository to install dependencies and download the VIST dataset.
 
 ## Models
-In order to experiment with (and hopefully improve) our models for controlled style classification (i.e., given a text, predict a gender of it) and parallel style transfer.
+In order to experiment with (and hopefully improve) our models for controlled style classification (i.e., given a text, predict a gender of it) and parallel style transfer (i.e., text1 + style -> text2), you can run following commands:
+
+```
+    python XXX.py
+```
+
+
 
 ## Citation
     
@@ -26,5 +39,4 @@ In order to experiment with (and hopefully improve) our models for controlled st
     }
 
 ## Acknowledgement
- - We use some of the code in XXX for XXX.
- - ACK in paper should be copited here too. 
+ - This work would not have been possible without the ViST dataset and helpful suggestions with Ting-Hao Huang. We also thank Alan W Black, Dan Jurafsky, Wei Xu, Taehee Jung, and anonymous reviewers for their helpful comments.
