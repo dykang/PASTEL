@@ -4,8 +4,8 @@ Data and code for ["(Male, Bachelor) and (Female, Ph.D) have different connotati
 ## The PASTEL dataset
 PASTEL is a parallelly annotated stylistic language dataset.
 The dataset consists of ~41K parallel sentences and 8.3K parallel stories annotated across different personas.
+Each story is split into the train/dev/test splits (same splits used in the paper). The raw image links and sentences are extracted from the [ViST](http://visionandlanguage.net/VIST/) dataset.
 
-Each story is split into the train/dev/test splits (same splits used in the paper). Due to licensing constraints, we provide instructions and scripts for downloading the VIST dataset for raw reference sentences and images.
 
 #### Examples in PASTEL:
 <img src="dataset.png" width="90%" height="90%">
@@ -21,11 +21,24 @@ Run `./setup.sh` at the root of this repository to install dependencies, unzip t
 Run ```python code/examples/load_dataset.py```
 
 ## Models
-In order to experiment with (and hopefully improve) our models for controlled style classification (i.e., given a text, predict a gender of it) and parallel style transfer (i.e., text1 + style -> text2), you can run following commands:
+In order to experiment with (and hopefully improve) our models for two applications:
 
+
+To run controlled style classification (i.e., given a text, predict a gender of it), you can run following commands:
+
+```shell
+  cd ./code/StyleClassify/
+  ./run_classify.sh
 ```
-    python XXX.py
+
+
+To run parallel style transfer (i.e., text1 + style -> text2), you can run following commands:
+
+```shell
+  cd ./code/StyleClassify/
+  ./run_transfer.sh
 ```
+
 
 
 
