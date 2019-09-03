@@ -76,7 +76,7 @@ To run parallel style transfer (i.e., text1 + style -> text2), you can run:
 
 
 ## Notes:
- - (Sep 2019) our codes for StylClassify will be added soon. We are working on finalizing+refacotring the code right now.
+ - (Sep 2019) our codes for StyleTransfer will be added soon. We are working on finalizing+refacotring the code right now.
 
 
 ## Citation
