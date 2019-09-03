@@ -4,11 +4,9 @@ Data and code for ["(Male, Bachelor) and (Female, Ph.D) have different connotati
 ## The PASTEL dataset
 PASTEL is a parallelly annotated stylistic language dataset.
 The dataset consists of ~41K parallel sentences and 8.3K parallel stories annotated across different personas.
-Each story is split into the train/dev/test splits (same splits used in the paper). The raw image links and sentences are extracted from the [ViST](http://visionandlanguage.net/VIST/) dataset.
-
 
 #### Examples in PASTEL:
-<img src="dataset.png" width="90%" height="90%">
+<img src="dataset.png" width="90%" height="80%">
 
 #### Style-transfer using PASTEL
 <img src="transfer.png" width="80%" height="80%">
@@ -17,14 +15,26 @@ Each story is split into the train/dev/test splits (same splits used in the pape
 ## Setup Configuration
 Run `./setup.sh` at the root of this repository to install dependencies, unzip the data file into data/ directory, and download GloVe embedding under data/word2vec/.
 
+## Data format
+Once you extract the `data.zip` under `./data/` directory, you will see two sub-directories: `sentences` for and `stories`. Each sentence/story is split into the train/dev/test splits (same splits used in the paper). For each split, annotation files are stored
+The raw image links and sentences are extracted from the [ViST](http://visionandlanguage.net/VIST/) dataset.
+
+
 ## A script to load the dataset quickly
-Run ```python code/examples/load_dataset.py```
+To directly use our dataset for your applications, please use our example script:
+
+```shell
+  python code/examples/load_dataset.py
+```
+
+
+
 
 ## Models
-In order to experiment with (and hopefully improve) our models for two applications:
+In order to experiment with (and hopefully improve) our models for two applications, please run following commands:
 
 
-To run controlled style classification (i.e., given a text, predict a gender of it), you can run following commands:
+To run controlled style classification (i.e., given a text, predict a gender of it), you can run:
 
 ```shell
   cd ./code/StyleClassify/
@@ -32,7 +42,7 @@ To run controlled style classification (i.e., given a text, predict a gender of 
 ```
 
 
-To run parallel style transfer (i.e., text1 + style -> text2), you can run following commands:
+To run parallel style transfer (i.e., text1 + style -> text2), you can run:
 
 ```shell
   cd ./code/StyleClassify/
