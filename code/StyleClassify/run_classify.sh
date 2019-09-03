@@ -3,7 +3,7 @@
 PROJ='PASTEL'
 DATADIR=../../data/
 MODELDIR=../../model/
-W2VDIR=../..//data/word2vec/glove.840B.300d.txt
+W2VDIR=../../data/word2vec/glove.840B.300d.txt
 MAXFEATURE=70000
 
 LTYPES=('controlled' 'combined')
