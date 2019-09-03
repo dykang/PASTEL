@@ -2,3 +2,6 @@ rake-nltk
 csvmapper
 bearcart
 spacy
+scikit-learn
+numpy
+nltk

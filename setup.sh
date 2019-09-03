@@ -9,3 +9,7 @@ python setup.py install
 
 # TODO download glove.840B.300d.txt in ./data/word2vec/
 
+
+# Unzipping data files
+cd data/
+unzip data.zip

@@ -36,3 +36,4 @@ for LEVEL in "${LEVELS[@]}"
         done
     done
 done
+
