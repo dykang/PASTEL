@@ -26,7 +26,7 @@ Once you extract the `data.zip` under `./data/` directory, you will see two sub-
  - **output.sentences**: a list of (single) annotated sentence for story (sentence)
  
 
-Here are example json files for `stories` (top) and `sentences` (botton):
+Here are example json files for `sentences` (top) and `stories` (botton) level:
 ```
 {'annotation_id': '22724', 
  'per_annotation_id': '22724', 
@@ -35,7 +35,8 @@ Here are example json files for `stories` (top) and `sentences` (botton):
  'input.keywords': '(partied|night)', 
  'input.images': 'https://farm1.staticflickr.com/43/82526956_6192dcfa33_o.jpg', 
  'input.sentences': 'and partied the night away', 
- 'output.sentences': 'They partied all night.'}
+ 'output.sentences': 'They partied all night.'
+ }
 ```
 ```
 {'annotation_id': '38918', 
@@ -45,7 +46,8 @@ Here are example json files for `stories` (top) and `sentences` (botton):
  'input.keywords': ['(pretty|grown|grass)', '(single|orange|flower)', '(world|tallest|buildings)', '(leaf|growing|ground)', '(perfect|flower|bed)'], 
  'input.images': ['https://farm1.staticflickr.com/180/446895070_c43b800121_o.jpg', 'https://farm1.staticflickr.com/204/446902039_805dbe086f_o.jpg', 'https://farm1.staticflickr.com/187/446504229_392ffe3b05_o.jpg', 'https://farm1.staticflickr.com/207/446505566_2bd71c2fcb_o.jpg', 'https://farm1.staticflickr.com/233/446900415_dcf59c4007_o.jpg'], 
  'input.sentences': ['over grown grass but the flowers are really pretty .', 'a single beautiful orange flower .', 'some of the tallest buildings in the world .', '4 leaf clover but they are growing off the ground .', 'the perfect flower bed .'], 
- 'output.sentences': ['The grass had grown and was very pretty.', 'There was one single orange flower in the grass.', "Nearby were the world's tallest buildings.", 'There was a leaf growing in the ground.', 'The flower bed looked just perfect']}
+ 'output.sentences': ['The grass had grown and was very pretty.', 'There was one single orange flower in the grass.', "Nearby were the world's tallest buildings.", 'There was a leaf growing in the ground.', 'The flower bed looked just perfect']
+ }
 ```
 
 To directly use our dataset for your applications, please use our example script:
