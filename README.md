@@ -70,7 +70,7 @@ To run controlled style classification (i.e., given a text, predict a gender of 
 To run parallel style transfer (i.e., text1 + style -> text2), you can run:
 
 ```shell
-  cd ./code/StyleClassify/
+  cd ./code/StyleTransfer/
   ./run_transfer.sh
 ```
 
