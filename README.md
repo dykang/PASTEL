@@ -1,5 +1,5 @@
 # PASTEL
-Data and code for ["(Male, Bachelor) and (Female, Ph.D) have different connotations: Parallelly Annotated Stylistic Language Dataset with Multiple Personas"](https://arxiv.org/) by Dongyeop Kang, Varun Gangal, and Eduard Hovy, EMNLP 2019
+Data and code for ["(Male, Bachelor) and (Female, Ph.D) have different connotations: Parallelly Annotated Stylistic Language Dataset with Multiple Personas"](https://arxiv.org/abs/1909.00098) by Dongyeop Kang, Varun Gangal, and Eduard Hovy, EMNLP 2019
 
 ## The PASTEL dataset
 PASTEL is a parallelly annotated stylistic language dataset.
@@ -87,7 +87,7 @@ To run parallel style transfer (i.e., text1 + style -> text2), you can run:
       booktitle = {Conference on Empirical Methods in Natural Language Processing (EMNLP)},
       address = {Hong Kong},
       month = {November},
-      url = {https://arxiv.org/},
+      url = {https://arxiv.org/abs/1909.00098},
       year = {2019}
     }
 
