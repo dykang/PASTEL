@@ -12,6 +12,11 @@ The dataset consists of ~41K parallel sentences and 8.3K parallel stories annota
 <img src="transfer.png" width="60%">
 
 
+## Notes:
+ - (Sep 2019) we have added a new experimental result using BERT on style classification.
+ - (Sep 2019) our codes for StyleTransfer will be added soon. We are working on finalizing+refacotring the code right now.
+
+
 ## Setup Configuration
 Run `./setup.sh` at the root of this repository to install dependencies, unzip the data file into data/ directory, and download GloVe embedding under data/word2vec/.
 
@@ -74,9 +79,17 @@ To run parallel style transfer (i.e., text1 + style -> text2), you can run:
   ./run_transfer.sh
 ```
 
+## Additional experiments on style classification using BERT:
+- For Country, we only use two labels (U.S.A and U.K). The number in the paranthesis indicates the number of labels.
+- Note that this result is different from the one in the paper which only used two frequent labels instead. 
+- We use BERT uncased model with the default setting of [this script](https://github.com/huggingface/pytorch-transformers/blob/master/examples/run_glue.py). Majority classifier simply uses the major label from the training for the prediction on test. Since the labels for each is unbalanced we measure F1 score with macro avergging.
 
-## Notes:
- - (Sep 2019) our codes for StyleTransfer will be added soon. We are working on finalizing+refacotring the code right now.
+| Style |Gender (3) |	Age (8) |	Country (2) |	Politics (3) |	Education (10) |	Ethnic (10) |	TOW (5) |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Majority | 62.84	 | 41.56	 | 97.23	 | 42.94	 | 31.46	 | 75.43	 | 36.65 |
+| BERT (accuracy) | 73.09	 | 46.37	 | 97.18	 | 50.97	 | 42.59	 | 81.15	 | 42.23 |
+| BERT (f1:macro) | 48.75	 | 23.98	 | 55.29	 | 46.13	 | 25.44	 | 25.63	 | 31.6 |
+
 
 
 ## Citation
