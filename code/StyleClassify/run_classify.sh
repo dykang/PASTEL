@@ -10,6 +10,7 @@ LTYPES=('controlled' 'combined')
 LEVELS=('sentences' 'stories')
 
 for LEVEL in "${LEVELS[@]}"
+do
     for LTYPE in "${LTYPES[@]}"
     do
         echo "=============================================="
