@@ -1,6 +1,13 @@
 # PASTEL
 Data and code for ["(Male, Bachelor) and (Female, Ph.D) have different connotations: Parallelly Annotated Stylistic Language Dataset with Multiple Personas"](https://arxiv.org/abs/1909.00098) by Dongyeop Kang, Varun Gangal, and Eduard Hovy, EMNLP 2019
 
+## Notes:
+ - (Oct 2019) we have added the version 2.0 (v2) of our dataset in [data/data_v2.zip](https://github.com/dykang/PASTEL/blob/master/data/data_v2.zip): 39,778 sentences and 7,933 stories. In v2, we filtered out noisy example patterns that were not filtered out in the current version of the dataset. In detail, 1,772 sentences (~4.2%) out of 41,550 sentences are filtered out, and 377 stories (~4.5%) out of 8,310 stories are filtered out.  
+ - (Sep 2019) we have added a new experimental result using BERT on style classification.
+ - (Sep 2019) our codes for StyleTransfer will be added soon. We are working on finalizing+refacotring the code right now.
+
+
+
 ## The PASTEL dataset
 PASTEL is a parallelly annotated stylistic language dataset.
 The dataset consists of ~41K parallel sentences and 8.3K parallel stories annotated across different personas.
@@ -12,9 +19,6 @@ The dataset consists of ~41K parallel sentences and 8.3K parallel stories annota
 <img src="transfer.png" width="60%">
 
 
-## Notes:
- - (Sep 2019) we have added a new experimental result using BERT on style classification.
- - (Sep 2019) our codes for StyleTransfer will be added soon. We are working on finalizing+refacotring the code right now.
 
 
 ## Setup Configuration
