@@ -13,34 +13,13 @@ Format:
 import os
 import glob
 import json
-from collections import defaultdict
+import pprint
+from collections import defaultdict,Counter
 
-data_dir = 'data/'
-level = 'sentences' # 'sentences' or 'stories'
-
-STYLE_ORDER = ['gender', 'country', 'age', 'ethnic', 'education', 'politics', 'tod']
-
-
-data = []
-for dt in ['train','valid','test']:
-    d = []
-    files = glob.glob(os.path.join(data_dir, level, dt)+'/*.json')
-    for file in files:
-        with open(file) as fin:
-            d.append(json.load(fin))
-    print('Number of files/loaded-data: {}/{} in {}'.format(len(files),len(d), dt))
-    data.append(d)
-
-train,valid,test = tuple(data)
-
-# show some samples
-# format:
-print(train[-1])
-print()
 
 
 # show per-persona sentences
-def get_dic(data, verbose=False):
+def aggregate_data(data, STYLE_ORDER = ['gender', 'country', 'age', 'ethnic', 'education', 'politics', 'tod'], verbose=False):
     # persona dictionaries
     combined_dict = defaultdict(lambda: defaultdict(list))
     controlled_dict = defaultdict(list)
@@ -79,7 +58,49 @@ def get_dic(data, verbose=False):
         print('\t ...')
     return combined_dict, controlled_dict
 
-data = train+valid+test
-combined_dict, controlled_dict = get_dic(data, verbose=True)
 
+def read_dataset(data_dir, level):
+    data = []
+    for dt in ['train','valid','test']:
+        d = []
+        files = glob.glob(os.path.join(data_dir, level, dt)+'/*.json')
+        for file in files:
+            with open(file) as fin:
+                obj = dict(json.load(fin))
+                obj['filename'] = os.path.basename(file)
+                d.append(obj)
+        print('Number of files/loaded-data: {}/{} in {}'.format(len(files),len(d), dt))
+        data.append(d)
+
+    train,valid,test = tuple(data)
+    return train, valid, test
+
+def write_dataset(data_dir, level, data):
+    assert len(data) == 3
+    for data_per_type, datatype in zip(data, ['train','valid','test']):
+        dir = os.path.join(data_dir, level, datatype)
+        if not os.path.exists(dir):
+            os.makedirs(dir)
+
+        for obj in data_per_type:
+            with open(os.path.join(dir , obj['filename']), 'w') as f:
+                json.dump(obj, f)
+
+        print('Number of files written: {} in {}'.format(len(data_per_type), dir))
+    return
+
+
+
+def main(data_dir = '../../data/v2/', level = 'sentences', verbose=False):
+    train, valid, test = read_dataset(data_dir, level)
+
+    # show some samples
+    if verbose:
+        print(train[-1])
+
+    combined_dict, controlled_dict = aggregate_data(train+valid+test, verbose=True)
+
+
+
+if __name__ == '__main__': main()
 
