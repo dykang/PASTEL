@@ -25,7 +25,7 @@ The dataset consists of ~41K parallel sentences and 8.3K parallel stories annota
 Run `./setup.sh` at the root of this repository to install dependencies, unzip the data file into data/ directory, and download GloVe embedding under data/word2vec/.
 
 ## Data Format, Examples, and Simple Loading Script
-Once you extract the `data.zip` under `./data/` directory, you will see two sub-directories: `sentences` for single sentence level and `stories` for story level (i.e., a series of five sentences). Each sentence/story is split into the train/dev/test splits (same splits used in the paper). For each split, annotation files are stored as json files. Each json file for `stories`/`sentences` level is fomatted as follows:
+Once you extract the `data_v2.zip` under `./data/` directory, you will see two sub-directories: `v2/sentences` for single sentence level and `v2/stories` for story level (i.e., a series of five sentences). Each sentence/story is split into the train/dev/test splits (same splits used in the paper). For each split, annotation files are stored as json files. Each json file for `stories`/`sentences` level is fomatted as follows:
  - **id**: ID
  - **annotation_id** & **per_annotation_id**: annotation ID and ID per annotation
  - **persona**: seven types of annotator's persona (country, politics, tod, age, education, ehtnic, gender)
