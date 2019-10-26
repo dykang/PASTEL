@@ -1,0 +1,36 @@
+Code:
+
+[Python 2.7.14] is the version of python we have. Mostly though, any version of Python 2.7 should work fine and the last index shoudln't be an issue
+
+1. edit_distance [Used by EmbDistRetrieve i.e findDeleteLexicon.py] 
+https://pypi.org/project/Edit_Distance/
+
+2. numpy 1.16.2
+
+3. Maluuba's nlgeval [https://github.com/Maluuba/nlg-eval]  
+[Unfortunately nlgeval does not seem to have versions at the time we installed it, and we installed it out of the repo. 
+In case you face difficulties with nlgeval, let us know at Varun Gangal (vgangal AT andrew.cmu.edu) so that we could share the version of the repo we have] 
+
+4. Under glove/ , we use wiki.simple.vec, which can be downloaded from the FastText Wiki Vectors for Simple English below: 
+
+https://dl.fbaipublicfiles.com/fasttext/vectors-wiki/wiki.simple.vec
+
+
+Data:
+
+Our data post-processing pipeline still needs some fixing. Meanwhile, you can directly use the zip dumps shared at :
+
+https://drive.google.com/file/d/1vrBA9nhqDEaURVjzkp9xyN7avpCKZAbh/view?usp=sharing
+
+The numbers reported in our paper were with these exact dumps. 
+[Note that this is v1.1. The v1.2 version of the dataset in which we had more effective noise removal, released after paper acceptance, still 
+needs to be post-processed for style transfer clearly. In either case, those numbers will likely differ a bit from the ones in the paper anyway]
+
+The dumps essentially contain all pairs from our dataset [split by train-valid-test], and with suffixes .src and .tgt.
+
+Additionally, each line in .src is prepended with a canonical sequence of style attributes which describe the target. Example:
+
+<U.S.A> <18-24> <Ethnic-NativeAmerican> <HighSchool> <Centrist> <Afternoon> we decided to take a ride on the river .
+
+Our S2S models explicitly treat these style attribute tokens just like normal tokens.
+For other models, you may just strip these way in your code and use them as the target style label.

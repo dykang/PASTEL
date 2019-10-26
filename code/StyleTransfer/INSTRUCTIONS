@@ -1,0 +1,18 @@
+Common:
+Unzip post-processed data from the link shared under DEPENDENCIES under this directory as home. 
+On unzipping, a directory named data/ with the post-processed train-test splits will be present.
+There are many files, you may ignore most of them other than the ones we discuss here for now.
+
+{splitName}.STYLED.{src/tgt} denotes the respective src/tgt file for the corresponding split name
+As mentioned in the paper, the src sentences are the original VIST story captions, while tgt are our annotated sentences with specific target style
+As dicussed in DEPENDENCIES, The target style appears as tokens prepended to each src sentence line.
+
+ApproachName: EmbDistRetrieve
+1. Under glove/, download wiki.simple.vec from the link supplied in DEPENDENCIES
+
+2. cd to glove/ and run python constructEmbeddingDump.py. This will use glove/wiki.simple.vec to create embeddingDict.p, an intermediate file which EmbDistRetrieve uses.
+
+3. Run sh runEmbDistRetrieve.sh. 
+   
+   1. This first runs findDeleteLexicon.py and outputs the generated output file for the test set, data/test.STYLED.src.delete
+   2. It then runs computeNLGEvalMetrics.py to compute the various metrics comparing outputs and the file of references, i.e data/test.STYLED.tgt
