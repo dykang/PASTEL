@@ -22,7 +22,7 @@ def parseArguments():
     parser.add_argument('-min_tgt_frequency',type=int,dest='min_tgt_frequency',help='min_tgt_frequency',default=1) #Minimum frequency to not be UNKed on tgt side
     parser.add_argument('-MAX_SEQ_LEN',type=int,dest='MAX_SEQ_LEN',help='MAX_SEQ_LEN',default=500) #Maximum Length (set to high value to make unimportant)
     parser.add_argument('-MAX_TGT_SEQ_LEN',type=int,dest='MAX_TGT_SEQ_LEN',help='MAX_TGT_SEQ_LEN',default=90) #Maximum Target Sequence Length (set to high value to make unimportant)
-    parser.add_argument('-problem',dest='problem',help='problem',default="CHESS") #"MT" 
+    parser.add_argument('-problem',dest='problem',help='problem',default="MT") #"MT" 
     parser.add_argument('-method',dest='method',help='method',default="greedy") #"greedy or "beam" or "beamLM" or "beamSib"
     parser.add_argument('-beamSize',type=int,dest='beamSize',help='beamSize',default=3) #
     parser.add_argument('-p',type=float,dest='p',help='p',default=0.3) #p-value
@@ -65,7 +65,6 @@ def parseArguments():
 
 
     # Flags specific to solver_general
-    parser.add_argument('--harsh',action='store_true',dest="use_general_solver",default=False)
     parser.add_argument('-typ',dest="typ",default="two_tuple",help="input format")
     parser.add_argument('-useLM',action='store_true',dest='useLM',default=False)
 
