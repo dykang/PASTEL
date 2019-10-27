@@ -49,9 +49,11 @@ METEOR: 10.32
 ROUGE-L: 29.37
 EA: 0.800
 VE: 0.525
-
 Use the BLEU2.perl script under this directory to compute the BLEU-2 score:
+
 perl BLEU2.perl -lc reference_file_name < hypothesis_file_name
+
+This gives a BLEU-2 of 30.21
 
 
 Extended Description of the Model Architecture, Decoding Process etc:
