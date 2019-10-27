@@ -7,7 +7,7 @@ There are many files, you may ignore most of them other than the ones we discuss
 As mentioned in the paper, the src sentences are the original VIST story captions, while tgt are our annotated sentences with specific target style
 As dicussed in DEPENDENCIES, The target style appears as tokens prepended to each src sentence line.
 
-ApproachName: EmbDistRetrieve
+--------------      ApproachName: EmbDistRetrieve -------------------------------
 1. Under glove/, download wiki.simple.vec from the link supplied in DEPENDENCIES
 
 2. cd to glove/ and run python constructEmbeddingDump.py. This will use glove/wiki.simple.vec to create embeddingDict.p, an intermediate file which EmbDistRetrieve uses.
@@ -16,3 +16,85 @@ ApproachName: EmbDistRetrieve
    
    1. This first runs findDeleteLexicon.py and outputs the generated output file for the test set, data/test.STYLED.src.delete
    2. It then runs computeNLGEvalMetrics.py to compute the various metrics comparing outputs and the file of references, i.e data/test.STYLED.tgt
+
+
+---------------     ApproachName: S2S+Glove+Pretr -------------------------------
+1. Create a tmp/ directory with the current directory as root directory, in case it doesn't exist already
+
+mkdir tmp
+
+2. Run the script below. This will save checkpoints under tmp/ with the model name simpleModelGlove2BothPretrained as prefix and the number of training epochs as the suffix. 
+By default , we pretrain for 4 epochs [on pairs from YAFC] and train for 6 epochs. In this configuration, the lowest perplexity is reached after the 2nd or 3rd training epoch. 
+Since we use dev perplexity to select the best checkpoint, this is usually the checkpoint picked for inference.
+
+sh runModelAll. sh
+
+3. Run the script below [Note the bash instead of sh, this script won't run in sh]. 
+a) First does inference using beam search with beam size 3, for the test set.
+
+bash runInferenceAll.sh
+
+Note that, in this script, we have hard-coded which epoch's checkpoint of tmp/simpleModelGlove2BothPretrained-* should be loaded for decoding, with the value being 1 
+[i.e checkpoint after 2 training epochs]
+
+Your training log should look roughly similar to log/simpleModelGlove2BothPretrained_STYLED 
+
+b) Step a generates the test outputs in the file tmp/${modelName}_${sty}_${styNo[$sty]}.ckpt.test.beam.output data/${testName}.${sty}.tgt.
+   Next we run computeNLGEvalMetrics.py , evaluating this against the test target ground truth/ references
+
+The numbers you will get are almost close to the ones reported in the paper, save some small variation. 
+
+You should get similar numbers, though again not necessarily the same since the GPU seed and other sources of randomness vary from system to system.
+METEOR: 10.32
+ROUGE-L: 29.37
+EA: 0.800
+VE: 0.525
+
+Use the BLEU2.perl script under this directory to compute the BLEU-2 score:
+perl BLEU2.perl -lc reference_file_name < hypothesis_file_name
+
+
+Extended Description of the Model Architecture, Decoding Process etc:
+
+a) S2S.Arch.Details:
+
+Encoder Embedding Size: 300 [There are 2 encoders in forward and reverse direction, both of 300 embedding size and 384 hidden size. The embeddings between them are shared. After encoding the source sequence in forward and reverse direction, the corresponding 384-size state vectors are added]
+
+Decoder Embedding Size: 300
+
+Encoder Hidden Size: 384
+
+Decoder Hidden Size: 384
+
+Layer Sizes: Both Encoder and Decoder were Single-Layered
+
+Attention Mechanism: Dot Product Attention Over the Encoder States was Used 
+Input to Final Softmax Over Vocabulary: Concatentation of Decoder Hidden State and the current "Context Vector" [aggregation of encoder state vectors using the dot product attention].
+
+Were Encoder and Decoder Embeddings Shared?: No
+Were Encoder and Decoder Embeddings Initialized?: Yes, both were initialized with 300D glove embeddings, specifically, the "glove.6B.300d.txt" from the glove.6B.zip 
+at https://github.com/stanfordnlp/GloVe . Note that , word types not found in the glove vocab, if any, were initialized randomly. Also, 
+note that neither of the embedding matrices were frozen, i.e they were updated during training after being initialized this way.
+
+Optimizer: ADAM [with default hyperparameters as in PyTorch]
+
+Batch Size: 32
+
+Batching: Example Pairs Were First Sorted by The Source Sequence Length. They were then divided into batches of batch size
+
+Padding: Not that this would matter much, but we pre-padded the source sequence and post-padded the target sequence
+Vocabulary Creation: All source-side word types with freq=1 were converted to UNK. Similarly with the target-side. 
+
+b) Input Format:
+Note:Also noting one small detail: We gave the target style values prepended as tokens at the start of the source sequence. E.g to transfer "the gang was prepared to visit the city" to Gender = Female, Age = 18-24, etc, the source tokens will be as below:
+<Female> <U.S.A> <18-24> <Caucasian> <Edu-AssociateDegree> <LeftWing> <Night> the gang was prepared to visit the city
+
+Since there are [possibly] multiple styles, one need to give the tokens in a consistent way according to some order.  We follow the order:  Gender>CountryOfLiving>Age >Ethnic/Race>Education>Politics>TimeOfDay
+
+
+c) Decoding Process:
+Greedy/Beam? Beam 
+SearchBeam Size: 3
+Target Length Limit: We imposed a limit of 2*(srcLength)+10 on the target sequence length [Beam expansion is not continued beyond that length]
+
+
