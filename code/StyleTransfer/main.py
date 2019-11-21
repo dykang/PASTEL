@@ -78,10 +78,11 @@ params.lmObj=None
 print params
 
 if False: #params.use_general_solver:
-    import solver_general as solver
-    seq2seq=solver.Solver(params)
-    print "TYP = ", params.typ
-    seq2seq.main(typ=params.typ)
+    pass
+    #import solver_general as solver
+    #seq2seq=solver.Solver(params)
+    #print "TYP = ", params.typ
+    #seq2seq.main(typ=params.typ)
 elif params.useLM:
     import solver_lm as solver
     seq2seq=solver.Solver(params)
