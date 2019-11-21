@@ -77,7 +77,7 @@ params=parseArguments()
 params.lmObj=None
 print params
 
-if params.use_general_solver:
+if False: #params.use_general_solver:
     import solver_general as solver
     seq2seq=solver.Solver(params)
     print "TYP = ", params.typ
