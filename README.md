@@ -75,12 +75,7 @@ To run controlled style classification (i.e., given a text, predict a gender of 
   ./run_classify.sh
 ```
 
-To run parallel style transfer (i.e., text1 + style -> text2), you can run:
-
-```shell
-  cd ./code/StyleTransfer/
-  ./run_transfer.sh
-```
+To run parallel style transfer (i.e., text1 + style -> text2), complete the requirements in ```code/StyleTransfer/DEPENDENCIES``` and then follow the steps mentioned in ```code/StyleTransfer/INSTRUCTIONS``` (in that order)
 
 ## Additional experiments on style classification using BERT:
 - For Country, we only use two labels (U.S.A and U.K). The number in the paranthesis indicates the number of labels.
